@@ -40,7 +40,9 @@
             android:screenOrientation="landscape" />
         <activity
             android:name=".Title"
-            android:screenOrientation="landscape" />
+            android:screenOrientation="landscape" >
+
+        </activity>
     </application>
 
 </manifest>

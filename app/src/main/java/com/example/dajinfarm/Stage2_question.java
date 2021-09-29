@@ -25,8 +25,7 @@ public class Stage2_question extends AppCompatActivity {
             "蜂后的主要職責是產卵，\n以及透過散發化學氣味來控制蜂群。" ,
             "蜜蜂建造五角形的巢室可以用\n最少的材料製造出更寬敞的生活空間，\n同時承受住蜂蜜的重量。" ,
             "一個蜂群通常有三種成蜂，\n分別是工蜂、雄蜂和蜂后，\n他們都各司其職。" };
-    //TODO get answer value
-    Boolean[] answer ={false,false,false,false,false,false,false,false,false};
+    Boolean[] answer ={false,false,true,true,false,true,true,false,true};
 
     Intent intent;
     int index;
