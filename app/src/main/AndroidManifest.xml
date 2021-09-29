@@ -10,18 +10,21 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".Stage2_question"
-            android:screenOrientation="landscape">
-
-        </activity>
-        <activity
-            android:name=".Stage2"
+            android:name=".Stage3"
             android:screenOrientation="landscape">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+        <activity
+            android:name=".Stage2_question"
+            android:screenOrientation="landscape"></activity>
+        <activity
+            android:name=".Stage2"
+            android:screenOrientation="landscape">
+
         </activity>
         <activity
             android:name=".Stage1"
@@ -31,13 +34,13 @@
             android:screenOrientation="landscape" />
         <activity
             android:name=".Map"
-            android:screenOrientation="landscape"></activity>
+            android:screenOrientation="landscape" />
         <activity
             android:name=".Main"
             android:screenOrientation="landscape" />
         <activity
             android:name=".Title"
-            android:screenOrientation="landscape"></activity>
+            android:screenOrientation="landscape" />
     </application>
 
 </manifest>

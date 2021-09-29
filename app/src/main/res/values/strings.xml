@@ -23,4 +23,5 @@
     <string name="stage2_score">0/3</string>
     <string name="stage2_ans1">正確</string>
     <string name="stage2_ans2">錯誤</string>
+    <string name="stage3_title">請進到幸福20號內看看有哪些動物，\n幫忙把園區內的動物們送回家。</string>
 </resources>

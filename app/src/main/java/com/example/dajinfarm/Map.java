@@ -125,6 +125,34 @@ public class Map extends AppCompatActivity {
 
             }
         });
+        imageView_s2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                boolean chance = getSharedPreferences("stage",MODE_PRIVATE).getBoolean("stage2_chance",false);
+                if (chance){
+                    alertDialog();
+                }else{
+                    intent=new Intent(Map.this,Stage2.class);
+                    startActivity(intent);
+                    finish();
+                }
+
+            }
+        });
+        imageView_s3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                boolean chance = getSharedPreferences("stage",MODE_PRIVATE).getBoolean("stage3_chance",false);
+                if (chance){
+                    alertDialog();
+                }else{
+                    intent=new Intent(Map.this,Stage3.class);
+                    startActivity(intent);
+                    finish();
+                }
+
+            }
+        });
 
 
     }
