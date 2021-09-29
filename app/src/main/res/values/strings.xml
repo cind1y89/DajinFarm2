@@ -1,0 +1,26 @@
+<resources>
+    <string name="app_name">DajinFarm</string>
+    <string name="error">Error</string>
+    <string name="welcome">~ 歡 迎 來 到 大 進 休 閒 農 業 區 ~</string>
+    <string name="rule">玩法說明</string>
+    <string name="start1">開始挑戰</string>
+    <string name="mainDis">請參考地圖，到達指定地點後會跳出任務。挑戰成功即可收集到通關字，集滿字數就能換到相對應的折價券。</string>
+    <string name="scarch">尚未抵達任何地點</string>
+    <string name="scarchDis">正在尋找位置</string>
+    <string name="stage1">大鼻子的自由創作</string>
+    <string name="stage1Dis">大鼻子的自由創作提供各種木頭材質及各種機具讓小朋友發揮自己的創意製作任何作品，是一個兼具親子互動、學習木工創作與環保的好地方。</string>
+    <string name="stage0_question">請先進入服務中心，看看有什麼體驗?</string>
+    <string name="stage0_ans1">陶藝</string>
+    <string name="stage0_ans2">鐵花窗</string>
+    <string name="stage0_ans3">木工</string>
+    <string name="ans_error">喔不!你答錯了</string>
+    <string name="button_yes">確認</string>
+    <string name="ans_right">恭喜，你答對了</string>
+    <string name="stage_dis">你已經玩過了喔</string>
+    <string name="stage2_dis">請問你們今天\n總消費金額是多少？\n(請按計算機輸入金額)</string>
+    <string name="stage1_dis">請填入金額</string>
+    <string name="stage2_title">你對蜜蜂有多瞭解？\n擲骰子走到橘色蜂巢裡，回答問題幫蜜蜂釀造蜂蜜！</string>
+    <string name="stage2_score">0/3</string>
+    <string name="stage2_ans1">正確</string>
+    <string name="stage2_ans2">錯誤</string>
+</resources>
