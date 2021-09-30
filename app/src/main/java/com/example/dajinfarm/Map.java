@@ -216,11 +216,32 @@ public class Map extends AppCompatActivity {
                 if (chance){
                     alertDialog();
                 }else{
-                    intent=new Intent(Map.this,Stage8.class);
+                    intent=new Intent(Map.this,Stage9.class);
                     startActivity(intent);
                     finish();
                 }
 
+            }
+        });
+        imageView_s9.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                boolean chance = getSharedPreferences("stage",MODE_PRIVATE).getBoolean("stage9_chance",false);
+                if (chance){
+                    alertDialog();
+                }else{
+                    intent=new Intent(Map.this,Stage9.class);
+                    startActivity(intent);
+                    finish();
+                }
+
+            }
+        });
+        imageView_sbouns.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                    intent=new Intent(Map.this,Stage_bouns.class);
+                    startActivity(intent);
             }
         });
 

@@ -38,4 +38,10 @@
     <string name="stage8_title">請問春記、劉記、順進三家各賣什麼產品？\n（全對才過關）</string>
     <string name="stage8_hint">請輸入</string>
     <string name="stage_button">確定</string>
+    <string name="stage9_titile">擲出「聖筊」(一平一凸)，就能過關!</string>
+    <string name="stageb_title">累計獎勵(請回遊客中心兌煥)</string>
+    <string name="stageb_c1">大進伴手禮折價券×1</string>
+    <string name="stageb_c1dis">收集滿4個字</string>
+    <string name="stageb_c2">大鼻子手作折價券×1\n神隱村DIY折價券×1</string>
+    <string name="stageb_c2dis">收集滿9個字</string>
 </resources>
