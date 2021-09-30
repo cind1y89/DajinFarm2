@@ -29,4 +29,13 @@
     <string name="stage4_ans3">水官</string>
     <string name="stage4_ans2">地官</string>
     <string name="stage4_ans1">天官</string>
+    <string name="stage6_title">不同的季節來到松茂果園可以採摘不一樣的水果，\n 請幫忙把下列水果移動到適合的產季吧！</string>
+    <string name="stage7_title">請問吊橋上的圖騰，\n是原住民哪一族的圖騰?</string>
+    <string name="stage7_ans4">排灣族</string>
+    <string name="stage7_ans3">布農族</string>
+    <string name="stage7_ans2">阿美族</string>
+    <string name="stage7_ans1">泰雅族</string>
+    <string name="stage8_title">請問春記、劉記、順進三家各賣什麼產品？\n（全對才過關）</string>
+    <string name="stage8_hint">請輸入</string>
+    <string name="stage_button">確定</string>
 </resources>

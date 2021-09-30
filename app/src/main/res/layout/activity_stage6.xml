@@ -1,0 +1,215 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Stage6">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayout10"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="24dp"
+        app:layout_constraintBottom_toTopOf="@+id/constraintLayout9"
+        app:layout_constraintEnd_toEndOf="@+id/constraintLayout9"
+        app:layout_constraintStart_toStartOf="@+id/constraintLayout9"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_chainStyle="packed">
+
+        <TextView
+            android:id="@+id/textView4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:gravity="center"
+            android:text="@string/stage6_title"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="@+id/constraintLayout7"
+            app:layout_constraintEnd_toStartOf="@+id/constraintLayout7"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintHorizontal_chainStyle="packed"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/constraintLayout7" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/constraintLayout7"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="16dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/textView4"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <ImageView
+                android:id="@+id/imageView_heart1"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:contentDescription="@string/error"
+                app:layout_constraintBottom_toBottomOf="@+id/imageView_heart2"
+                app:layout_constraintEnd_toStartOf="@+id/imageView_heart2"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/imageView_heart2"
+                app:srcCompat="@drawable/heart1" />
+
+            <ImageView
+                android:id="@+id/imageView_heart2"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:contentDescription="@string/error"
+                app:layout_constraintBottom_toBottomOf="@+id/imageView_heart3"
+                app:layout_constraintEnd_toStartOf="@+id/imageView_heart3"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toEndOf="@+id/imageView_heart1"
+                app:layout_constraintTop_toTopOf="@+id/imageView_heart3"
+                app:srcCompat="@drawable/heart1" />
+
+            <ImageView
+                android:id="@+id/imageView_heart3"
+                android:layout_width="40dp"
+                android:layout_height="50dp"
+                android:contentDescription="@string/error"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toEndOf="@+id/imageView_heart2"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/heart1" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayout9"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/constraintLayout10">
+
+        <ImageView
+            android:id="@+id/imageView_fruit1"
+            android:layout_width="65dp"
+            android:layout_height="65dp"
+            android:layout_marginBottom="8dp"
+            android:contentDescription="@string/error"
+            app:layout_constraintBottom_toTopOf="@+id/imageView_basket1"
+            app:layout_constraintEnd_toStartOf="@+id/imageView_fruit2"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintHorizontal_chainStyle="spread"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/fruit1" />
+
+        <ImageView
+            android:id="@+id/imageView_fruit2"
+            android:layout_width="65dp"
+            android:layout_height="65dp"
+            android:contentDescription="@string/error"
+            app:layout_constraintBottom_toBottomOf="@+id/imageView_fruit1"
+            app:layout_constraintEnd_toStartOf="@+id/imageView_fruit3"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/imageView_fruit1"
+            app:layout_constraintTop_toTopOf="@+id/imageView_fruit1"
+            app:srcCompat="@drawable/fruit2" />
+
+        <ImageView
+            android:id="@+id/imageView_fruit3"
+            android:layout_width="65dp"
+            android:layout_height="65dp"
+            android:contentDescription="@string/error"
+            app:layout_constraintBottom_toBottomOf="@+id/imageView_fruit2"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/imageView_fruit2"
+            app:layout_constraintTop_toTopOf="@+id/imageView_fruit2"
+            app:srcCompat="@drawable/fruit3" />
+
+        <ImageView
+            android:id="@+id/imageView_fruit4"
+            android:layout_width="65dp"
+            android:layout_height="65dp"
+            android:contentDescription="@string/error"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/imageView_fruit5"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/imageView_basket1"
+            app:srcCompat="@drawable/fruit4" />
+
+        <ImageView
+            android:id="@+id/imageView_fruit5"
+            android:layout_width="65dp"
+            android:layout_height="65dp"
+            android:contentDescription="@string/error"
+            app:layout_constraintBottom_toBottomOf="@+id/imageView_fruit4"
+            app:layout_constraintEnd_toStartOf="@+id/imageView_fruit6"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/imageView_fruit4"
+            app:layout_constraintTop_toTopOf="@+id/imageView_fruit4"
+            app:srcCompat="@drawable/fruit5" />
+
+        <ImageView
+            android:id="@+id/imageView_fruit6"
+            android:layout_width="65dp"
+            android:layout_height="65dp"
+            android:contentDescription="@string/error"
+            app:layout_constraintBottom_toBottomOf="@+id/imageView_fruit5"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/imageView_fruit5"
+            app:layout_constraintTop_toTopOf="@+id/imageView_fruit5"
+            app:srcCompat="@drawable/fruit6" />
+
+        <ImageView
+            android:id="@+id/imageView_basket1"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_marginBottom="8dp"
+            android:contentDescription="@string/error"
+            app:layout_constraintBottom_toTopOf="@+id/imageView_fruit4"
+            app:layout_constraintEnd_toStartOf="@+id/imageView_basket2"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/imageView_fruit1"
+            app:srcCompat="@drawable/basket1" />
+
+        <ImageView
+            android:id="@+id/imageView_basket2"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:contentDescription="@string/error"
+            app:layout_constraintBottom_toBottomOf="@+id/imageView_basket1"
+            app:layout_constraintEnd_toStartOf="@+id/imageView_basket3"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/imageView_basket1"
+            app:layout_constraintTop_toTopOf="@+id/imageView_basket1"
+            app:srcCompat="@drawable/basket2" />
+
+        <ImageView
+            android:id="@+id/imageView_basket3"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:contentDescription="@string/error"
+            app:layout_constraintBottom_toBottomOf="@+id/imageView_basket2"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/imageView_basket2"
+            app:layout_constraintTop_toTopOf="@+id/imageView_basket2"
+            app:srcCompat="@drawable/basket3" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

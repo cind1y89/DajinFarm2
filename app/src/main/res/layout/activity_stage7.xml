@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Stage4">
+    tools:context=".Stage7">
 
     <Button
         android:id="@+id/button_ans1"
@@ -12,7 +12,7 @@
         android:layout_height="80dp"
         android:layout_marginTop="8dp"
         android:background="@drawable/button"
-        android:text="@string/stage4_ans1"
+        android:text="@string/stage7_ans1"
         android:textSize="24sp"
         app:layout_constraintBottom_toTopOf="@+id/button_ans3"
         app:layout_constraintEnd_toStartOf="@+id/button_ans2"
@@ -25,7 +25,7 @@
         android:layout_width="150dp"
         android:layout_height="80dp"
         android:background="@drawable/button"
-        android:text="@string/stage4_ans2"
+        android:text="@string/stage7_ans2"
         android:textSize="24sp"
         app:layout_constraintBottom_toBottomOf="@+id/button_ans1"
         app:layout_constraintEnd_toEndOf="parent"
@@ -39,7 +39,7 @@
         android:layout_height="80dp"
         android:layout_marginBottom="8dp"
         android:background="@drawable/button"
-        android:text="@string/stage4_ans3"
+        android:text="@string/stage7_ans3"
         android:textSize="24sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/button_ans1"
@@ -52,7 +52,7 @@
         android:layout_height="80dp"
         android:layout_marginBottom="8dp"
         android:background="@drawable/button"
-        android:text="@string/stage4_ans4"
+        android:text="@string/stage7_ans4"
         android:textSize="24sp"
         app:layout_constraintBottom_toBottomOf="@+id/button_ans3"
         app:layout_constraintEnd_toEndOf="parent"
@@ -65,7 +65,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
-        android:text="@string/stage4_title"
+        android:gravity="center"
+        android:text="@string/stage7_title"
         android:textSize="24sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -73,5 +74,4 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.0" />
-
 </androidx.constraintlayout.widget.ConstraintLayout>
