@@ -24,4 +24,9 @@
     <string name="stage2_ans1">正確</string>
     <string name="stage2_ans2">錯誤</string>
     <string name="stage3_title">請進到幸福20號內看看有哪些動物，\n幫忙把園區內的動物們送回家。</string>
+    <string name="stage4_title">進安宮原供奉的主神是？</string>
+    <string name="stage4_ans4">土地公</string>
+    <string name="stage4_ans3">水官</string>
+    <string name="stage4_ans2">地官</string>
+    <string name="stage4_ans1">天官</string>
 </resources>
