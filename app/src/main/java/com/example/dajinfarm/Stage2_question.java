@@ -40,47 +40,144 @@ public class Stage2_question extends AppCompatActivity {
         textView_question=findViewById(R.id.textView_question);
 
         intent = getIntent();
-        index=intent.getIntExtra("index",10);
+        index=intent.getIntExtra("index",0);
         if(index==0){
             textView_question.setText(question[0]);
             button1.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
+                    alertDialogFail();
+                }
+            });
+            button2.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
                     alertDialogCorrect();
-                    //TODO intent back
+                }
+            });
+        }else if(index==2){
+            textView_question.setText(question[1]);
+            button1.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    alertDialogFail();
+                }
+            });
+            button2.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    alertDialogCorrect();
+                }
+            });
+        }else if(index==4){
+            textView_question.setText(question[2]);
+            button1.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    alertDialogCorrect();
                 }
             });
             button2.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
                     alertDialogFail();
-                    //TODO intent back and minus heart ui
                 }
             });
-        //TODO other section
-        }else if(index==1){
-            textView_question.setText(question[1]);
-        }else if(index==3){
-            textView_question.setText(question[2]);
         }else if(index==5){
             textView_question.setText(question[3]);
-        }else if(index==6){
+            button1.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    alertDialogCorrect();
+                }
+            });
+            button2.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    alertDialogFail();
+                }
+            });
+        }else if(index==8){
             textView_question.setText(question[4]);
+            button1.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    alertDialogFail();
+                }
+            });
+            button2.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    alertDialogCorrect();
+                }
+            });
         }else if(index==9){
             textView_question.setText(question[5]);
-        }else if(index==10){
+            button1.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    alertDialogCorrect();
+                }
+            });
+            button2.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    alertDialogFail();
+                }
+            });
+        }else if(index==11){
             textView_question.setText(question[6]);
-        }else if(index==12){
+            button1.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    alertDialogCorrect();
+                }
+            });
+            button2.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    alertDialogFail();
+                }
+            });
+        }else if(index==13){
             textView_question.setText(question[7]);
+            button1.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    alertDialogFail();
+                }
+            });
+            button2.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    alertDialogCorrect();
+                }
+            });
         }else if(index==14){
             textView_question.setText(question[8]);
-        }else if(index==15){
-            textView_question.setText(question[9]);
+            button1.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    alertDialogCorrect();
+                }
+            });
+            button2.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    alertDialogFail();
+                }
+            });
         }
     }
 
     // wrong dialog
     private void alertDialogFail() {
+        int wrong = getSharedPreferences("stage",MODE_PRIVATE).getInt("stage2_wrong",0);
+        SharedPreferences pref = getSharedPreferences("stage", MODE_PRIVATE);
+        pref.edit()
+                .putInt("stage2_wrong",(wrong+1))
+                .apply();
+
         AlertDialog.Builder alertDialog=new AlertDialog.Builder(Stage2_question.this);
         alertDialog.setTitle("");
         alertDialog.setMessage(R.string.ans_error)
@@ -88,6 +185,7 @@ public class Stage2_question extends AppCompatActivity {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
 
+                        finish();
                     }
                 })
                 .setCancelable(false)
@@ -95,13 +193,19 @@ public class Stage2_question extends AppCompatActivity {
     }
     // right dialog
     private void alertDialogCorrect() {
+        int right = getSharedPreferences("stage",MODE_PRIVATE).getInt("stage2_right",0);
+        SharedPreferences pref = getSharedPreferences("stage", MODE_PRIVATE);
+        pref.edit()
+                .putInt("stage2_right",(right+1))
+                .apply();
+
         AlertDialog.Builder alertDialog=new AlertDialog.Builder(Stage2_question.this);
         alertDialog.setTitle("");
         alertDialog.setMessage(R.string.ans_right)
                 .setPositiveButton(getString(R.string.button_yes), new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
-
+                        finish();
                     }
                 })
                 .setCancelable(false)

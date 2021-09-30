@@ -75,7 +75,7 @@
             <ImageView
                 android:id="@+id/imageView_heart3"
                 android:layout_width="40dp"
-                android:layout_height="50dp"
+                android:layout_height="40dp"
                 android:contentDescription="@string/error"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -100,7 +100,7 @@
         app:layout_constraintTop_toBottomOf="@+id/constraintLayout6">
 
         <ImageView
-            android:id="@+id/imageView4"
+            android:id="@+id/imageView_map"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:contentDescription="@string/error"
@@ -108,6 +108,22 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/background" />
+            app:srcCompat="@drawable/bee0" />
+
+        <ImageView
+            android:id="@+id/imageView_dice"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="16dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="1.0"
+            app:srcCompat="@drawable/d6" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
+
 </androidx.constraintlayout.widget.ConstraintLayout>
