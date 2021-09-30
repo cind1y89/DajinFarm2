@@ -50,11 +50,7 @@
         <activity
             android:name=".Stage2"
             android:screenOrientation="landscape" >
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity
             android:name=".Stage1"
@@ -72,7 +68,13 @@
             android:screenOrientation="landscape" />
         <activity
             android:name=".Title"
-            android:screenOrientation="landscape" />
+            android:screenOrientation="landscape" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
     </application>
 
 </manifest>
