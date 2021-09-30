@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Stage5_section2">
+    tools:context=".Stage5_section2"
+    android:background="@drawable/background4">
 
     <GridView
         android:id="@+id/gridView"

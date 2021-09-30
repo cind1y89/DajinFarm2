@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Stage8">
+    tools:context=".Stage8"
+    android:background="@drawable/background4">
 
     <EditText
         android:id="@+id/ans1"

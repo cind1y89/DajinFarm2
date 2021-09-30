@@ -236,7 +236,7 @@ public class Map extends AppCompatActivity {
                 if (chance){
                     alertDialog();
                 }else{
-                    intent=new Intent(Map.this,Stage9.class);
+                    intent=new Intent(Map.this,Stage8.class);
                     startActivity(intent);
                     finish();
                 }

@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Stage_bouns">
+    tools:context=".Stage_bouns"
+    android:background="@drawable/background4">
 
     <ImageView
         android:id="@+id/imageView8"
