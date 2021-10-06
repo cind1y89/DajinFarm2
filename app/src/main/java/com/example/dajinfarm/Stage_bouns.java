@@ -15,11 +15,37 @@ public class Stage_bouns extends AppCompatActivity {
     ImageView imageView_c1,imageView_c2;
     int count;
     boolean bonus1,bonus2;
+    ImageView imageView_button;
+    Intent intent;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_stage_bouns);
+
+        imageView_button=findViewById(R.id.imageView_home);
+        imageView_button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                AlertDialog.Builder alertDialog=new AlertDialog.Builder(Stage_bouns.this);
+                alertDialog.setTitle(R.string.back);
+                alertDialog.setMessage("")
+                        .setPositiveButton(getString(R.string.button_yes), new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialogInterface, int i) {
+                                finish();
+                            }
+                        })
+                        .setNegativeButton("取消", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialogInterface, int i) {
+
+                            }
+                        })
+                        .setCancelable(false)
+                        .show();
+            }
+        });
 
         imageView_c1=findViewById(R.id.imageView_c1);
         imageView_c2=findViewById(R.id.imageView_c2);

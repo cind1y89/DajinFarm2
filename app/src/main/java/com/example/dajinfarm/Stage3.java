@@ -19,7 +19,7 @@ public class Stage3 extends AppCompatActivity {
     Intent intent;
     ImageView imageView_chicken,imageView_peacock,imageView_ostrich,
               imageView_goat,imageView_camel,imageView_house,
-              imageView_heart1,imageView_heart2,imageView_heart3;
+              imageView_heart1,imageView_heart2,imageView_heart3,imageView_button;
 
     boolean[] animal={true,true,true,true,true};
     boolean[] animal_count={true,true,true,true,true};
@@ -33,6 +33,40 @@ public class Stage3 extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_stage3);
+
+
+        imageView_button=findViewById(R.id.imageView_home);
+        imageView_button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                AlertDialog.Builder alertDialog=new AlertDialog.Builder(Stage3.this);
+                alertDialog.setTitle(R.string.back);
+                alertDialog.setMessage(R.string.back_dis)
+                        .setPositiveButton(getString(R.string.button_yes), new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialogInterface, int i) {
+                                SharedPreferences pref = getSharedPreferences("stage", MODE_PRIVATE);
+                                pref.edit()
+                                        .putBoolean("stage3",false)
+                                        .putBoolean("stage3_chance",true)
+                                        .apply();
+
+                                intent=new Intent(Stage3.this,Map.class);
+                                startActivity(intent);
+                                finish();
+                            }
+                        })
+                        .setNegativeButton("取消", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialogInterface, int i) {
+
+                            }
+                        })
+                        .setCancelable(false)
+                        .show();
+            }
+        });
+
 
         imageView_chicken=findViewById(R.id.imageView_chicken);
         imageView_peacock=findViewById(R.id.imageView_peacock);

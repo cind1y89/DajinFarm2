@@ -10,6 +10,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 public class Stage8 extends AppCompatActivity {
@@ -18,11 +19,44 @@ public class Stage8 extends AppCompatActivity {
     String text1,text2,text3;
     Button button;
     Intent intent;
+    ImageView imageView_button;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_stage8);
+
+        imageView_button=findViewById(R.id.imageView_home);
+        imageView_button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                AlertDialog.Builder alertDialog=new AlertDialog.Builder(Stage8.this);
+                alertDialog.setTitle(R.string.back);
+                alertDialog.setMessage(R.string.back_dis)
+                        .setPositiveButton(getString(R.string.button_yes), new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialogInterface, int i) {
+                                SharedPreferences pref = getSharedPreferences("stage", MODE_PRIVATE);
+                                pref.edit()
+                                        .putBoolean("stage8",false)
+                                        .putBoolean("stage8_chance",true)
+                                        .apply();
+
+                                intent=new Intent(Stage8.this,Map.class);
+                                startActivity(intent);
+                                finish();
+                            }
+                        })
+                        .setNegativeButton("取消", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialogInterface, int i) {
+
+                            }
+                        })
+                        .setCancelable(false)
+                        .show();
+            }
+        });
 
         t1=findViewById(R.id.ans1);
         t2=findViewById(R.id.ans2);

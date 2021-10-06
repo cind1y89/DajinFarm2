@@ -24,7 +24,7 @@ public class Stage6 extends AppCompatActivity {
     ImageView imageView_f1,imageView_f2,imageView_f3,
               imageView_f4,imageView_f5,imageView_f6,
               imageView_b1,imageView_b2,imageView_b3,
-              imageView_heart1,imageView_heart2,imageView_heart3;
+              imageView_heart1,imageView_heart2,imageView_heart3,imageView_button;
 
     boolean[] fruit={true,true,true,true,true,true};
     boolean[] fruit_count={true,true,true,true,true,true};
@@ -35,6 +35,38 @@ public class Stage6 extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_stage6);
+
+        imageView_button=findViewById(R.id.imageView_home);
+        imageView_button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                AlertDialog.Builder alertDialog=new AlertDialog.Builder(Stage6.this);
+                alertDialog.setTitle(R.string.back);
+                alertDialog.setMessage(R.string.back_dis)
+                        .setPositiveButton(getString(R.string.button_yes), new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialogInterface, int i) {
+                                SharedPreferences pref = getSharedPreferences("stage", MODE_PRIVATE);
+                                pref.edit()
+                                        .putBoolean("stage6",false)
+                                        .putBoolean("stage6_chance",true)
+                                        .apply();
+
+                                intent=new Intent(Stage6.this,Map.class);
+                                startActivity(intent);
+                                finish();
+                            }
+                        })
+                        .setNegativeButton("取消", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialogInterface, int i) {
+
+                            }
+                        })
+                        .setCancelable(false)
+                        .show();
+            }
+        });
 
         imageView_heart1=findViewById(R.id.imageView_heart1);
         imageView_heart2=findViewById(R.id.imageView_heart2);
@@ -343,7 +375,7 @@ public class Stage6 extends AppCompatActivity {
         }
 
 
-        if(right_count==6){
+        if(right_count>=2){
             alertDialogCorrect();
         }else if(invisible_count==6){
             alertDialogFail(); //for wrong not util 3 times, but not all right

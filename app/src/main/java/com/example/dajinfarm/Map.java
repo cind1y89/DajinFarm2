@@ -1,11 +1,20 @@
 package com.example.dajinfarm;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
 
+import android.Manifest;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.pm.PackageManager;
+import android.location.Criteria;
+import android.location.Location;
+import android.location.LocationListener;
+import android.location.LocationManager;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.KeyEvent;
@@ -15,6 +24,9 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import static android.Manifest.permission.ACCESS_FINE_LOCATION;
+
+
 public class Map extends AppCompatActivity {
 
     // Press twice for leaving
@@ -22,27 +34,34 @@ public class Map extends AppCompatActivity {
     long touchTime = 0;
 
     // UI
-    ImageView imageView_s0,imageView_s1,imageView_s2,imageView_s3,imageView_s4,
-              imageView_s5,imageView_s6,imageView_s7,imageView_s8,imageView_s9,
-              imageView_sbouns,imageView_stagepic,imageView_coupon;
-    TextView textView_title,textView_titleDis;
-    Button button_start,button_restart;
+    ImageView imageView_s0, imageView_s1, imageView_s2, imageView_s3, imageView_s4,
+            imageView_s5, imageView_s6, imageView_s7, imageView_s8, imageView_s9,
+            imageView_sbouns, imageView_stagepic;
+    TextView textView_title, textView_titleDis;
+    Button button_start, button_restart;
     Intent intent;
 
 
     //GPS
-    String[] title={
-            "大鼻子的自由創作",
-            "上旺土雞城","好蜜養蜂場","幸福20號農場",
-            "進安宮","神隱村農場","松茂果園","寒溪吊橋",
-            "劉記花生","春記麥芽酥","順進蜜餞行","百年茄苳樹"};
+    TextView textView_gpsX, textView_gpsY;
+    private double locationX = 0.0;
+    private double locationY = 0.0;
+    boolean gpsON = false;
+    LocationManager locationManager;
 
-    String[] Dis={
+
+    String[] title = {
+            "大鼻子的自由創作",
+            "上旺土雞城", "好蜜養蜂場", "幸福20號農場",
+            "進安宮", "神隱村農場", "松茂果園", "寒溪吊橋",
+            "劉記花生", "春記麥芽酥", "順進蜜餞行", "百年茄苳樹"};
+
+    String[] titleDis = {
             "大鼻子的自由創作提供各種木頭材質及各種機具讓小朋友發揮自己的創意製作任何作品，是一個兼具親子互動、學習木工創作與環保的好地方。",
             "標榜雞肉是現宰現烤的特色，現烤桶仔雞搭配當季在地野菜料理，鄉村風味好滋味。",
             "蜂場主人利用當地果園腐敗的水果給蜜蜂們補充營養，蜜的釀造到熟成約五到十天，因為是天然熟成的蜂蜜，堅持好的品質為顧客著想，努力的精神值得肯定。",
-            "一座舊豬舍，一棵歲痕滄桑的老香楠樹，變形的紅磚和被遺棄的老石板，在一對青年回鄉創業的幸福故事裡，所有的一草一木、一磚一瓦，兩夫妻親手搭建出屬於他們在蘭陽平原上自己幸福的20號農場，請進到農場內找尋遊戲答案。",
-            "1986年土地公廟改建，廟名改成進安宮，經擲筊獲土地公同意後，改供奉主神為天官、地官、水官，原供奉的土地公委身於偏殿，也因此留下「土地公賭輸，連廟也輸了」的傳說。",
+            "一座舊豬舍，一棵歲痕滄桑的老香楠樹，變形的紅磚和被遺棄的老石板，一對青年回鄉創業的故事，兩夫妻親手搭建出屬於他們的幸福20號農場，請到農場內找尋答案。",
+            "1986年土地公廟改建廟名改成進安宮，經擲筊獲土地公同意後，改供奉主神為天官、地官、水官，原供奉的土地公委身於偏殿，留下「土地公賭輸，連廟也輸了」的傳說。",
             "神隱村坐落在寒溪的路上，地方環境優美，給都市人遠離塵囂及耳目一新的感受，農場內有親自下田拔菜動手做玉子燒的體驗，適合假日全家大小一同來認識各種植物蔬果。",
             "松茂果園春季有桑葚、桃子、紅肉李等，夏季有宜蘭紅心芭樂、珍珠芭樂、水晶芭樂及火龍果等，秋冬有文旦、福柑、帝王柑、金棗、柳丁、西施柚等柑橘水果。園主蔡松茂種植果樹逾50年，更不斷積極開發、改良及引進適合在地新品種水果，各種水果味美可口。",
             "寒溪吊橋位於大同鄉寒溪村，橋上彩繪台灣原住民的菱形圖騰，象徵著泰雅族中的祖靈之眼，是宜蘭縣最長、最美的鋼索吊橋。",
@@ -57,7 +76,36 @@ public class Map extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_map);
 
-        imageView_coupon=findViewById(R.id.imageView_cupon);
+        //GPS
+        textView_gpsX=findViewById(R.id.textView_gpsX);
+        textView_gpsY=findViewById(R.id.textView_gpsY);
+
+        locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
+        Criteria criteria = new Criteria();
+        criteria.setAccuracy(Criteria.ACCURACY_COARSE);//位置解析的精度,高或低 引數: Criteria. ACCURACY_FINE,精確模式; Criteria. ACCURACY_COARSE,模糊模式;
+        criteria.setAltitudeRequired(false);//是否提供海拔高度資訊,是或否
+        criteria.setBearingRequired(false);//是否提供方向資訊,是或否
+        criteria.setCostAllowed(false);//是否允許運營商計費,是或否
+        criteria.setPowerRequirement(Criteria.POWER_LOW);//電池消耗,無、低、中、高
+        String provider = locationManager.getBestProvider(criteria, false);
+        //詢問是否存取位置資訊
+        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+            ActivityCompat.requestPermissions(
+                    this,
+                    new String[] {
+                            Manifest.permission.ACCESS_FINE_LOCATION,
+                            Manifest.permission.ACCESS_COARSE_LOCATION}, 1
+            );
+            return;
+        }else{
+            Location location = locationManager.getLastKnownLocation(provider);
+            updateLocation(location);
+            locationManager.requestLocationUpdates(provider, 3000, 0, locationListener);
+        }
+        Location location = locationManager.getLastKnownLocation(provider);
+
+
+
         imageView_s0=findViewById(R.id.imageView_s0);
         imageView_s1=findViewById(R.id.imageView_s1);
         imageView_s2=findViewById(R.id.imageView_s2);
@@ -72,7 +120,7 @@ public class Map extends AppCompatActivity {
         textView_title=findViewById(R.id.textView_tilte);
         imageView_stagepic=findViewById(R.id.imageView_stagepic);
         textView_titleDis=findViewById(R.id.textView_discription);
-        button_start=findViewById(R.id.button_start);
+        button_start=findViewById(R.id.button);
         button_restart=findViewById(R.id.button_restart);
 
         // clear all value
@@ -122,11 +170,18 @@ public class Map extends AppCompatActivity {
             public void onClick(View view) {
                 boolean chance = getSharedPreferences("stage",MODE_PRIVATE).getBoolean("stage0_chance",false);
                 if (chance){
+                    setDis(0);
                     alertDialog();
                 }else{
-                    intent=new Intent(Map.this,Stage0.class);
-                    startActivity(intent);
-                    finish();
+                    setDis(0);
+                    button_start.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+                            intent=new Intent(Map.this,Stage0.class);
+                            startActivity(intent);
+                            finish();
+                        }
+                    });
                 }
 
             }
@@ -136,11 +191,18 @@ public class Map extends AppCompatActivity {
             public void onClick(View view) {
                 boolean chance = getSharedPreferences("stage",MODE_PRIVATE).getBoolean("stage1_chance",false);
                 if (chance){
+                    setDis(1);
                     alertDialog();
                 }else{
-                    intent=new Intent(Map.this,Stage1.class);
-                    startActivity(intent);
-                    finish();
+                    setDis(1);
+                    button_start.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+                            intent=new Intent(Map.this,Stage1.class);
+                            startActivity(intent);
+                            finish();
+                        }
+                    });
                 }
 
             }
@@ -150,11 +212,18 @@ public class Map extends AppCompatActivity {
             public void onClick(View view) {
                 boolean chance = getSharedPreferences("stage",MODE_PRIVATE).getBoolean("stage2_chance",false);
                 if (chance){
+                    setDis(2);
                     alertDialog();
                 }else{
-                    intent=new Intent(Map.this,Stage2.class);
-                    startActivity(intent);
-                    finish();
+                    setDis(2);
+                    button_start.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+                            intent=new Intent(Map.this,Stage2.class);
+                            startActivity(intent);
+                            finish();
+                        }
+                    });
                 }
 
             }
@@ -164,13 +233,19 @@ public class Map extends AppCompatActivity {
             public void onClick(View view) {
                 boolean chance = getSharedPreferences("stage",MODE_PRIVATE).getBoolean("stage3_chance",false);
                 if (chance){
+                    setDis(3);
                     alertDialog();
                 }else{
-                    intent=new Intent(Map.this,Stage3.class);
-                    startActivity(intent);
-                    finish();
+                    setDis(3);
+                    button_start.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+                            intent=new Intent(Map.this,Stage3.class);
+                            startActivity(intent);
+                            finish();
+                        }
+                    });
                 }
-
             }
         });
         imageView_s4.setOnClickListener(new View.OnClickListener() {
@@ -178,11 +253,18 @@ public class Map extends AppCompatActivity {
             public void onClick(View view) {
                 boolean chance = getSharedPreferences("stage",MODE_PRIVATE).getBoolean("stage4_chance",false);
                 if (chance){
+                    setDis(4);
                     alertDialog();
                 }else{
-                    intent=new Intent(Map.this,Stage4.class);
-                    startActivity(intent);
-                    finish();
+                    setDis(4);
+                    button_start.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+                            intent=new Intent(Map.this,Stage4.class);
+                            startActivity(intent);
+                            finish();
+                        }
+                    });
                 }
 
             }
@@ -192,11 +274,18 @@ public class Map extends AppCompatActivity {
             public void onClick(View view) {
                 boolean chance = getSharedPreferences("stage",MODE_PRIVATE).getBoolean("stage5_chance",false);
                 if (chance){
+                    setDis(5);
                     alertDialog();
                 }else{
-                    intent=new Intent(Map.this,Stage5.class);
-                    startActivity(intent);
-                    finish();
+                    setDis(5);
+                    button_start.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+                            intent=new Intent(Map.this,Stage5.class);
+                            startActivity(intent);
+                            finish();
+                        }
+                    });
                 }
 
             }
@@ -206,11 +295,18 @@ public class Map extends AppCompatActivity {
             public void onClick(View view) {
                 boolean chance = getSharedPreferences("stage",MODE_PRIVATE).getBoolean("stage6_chance",false);
                 if (chance){
+                    setDis(6);
                     alertDialog();
                 }else{
-                    intent=new Intent(Map.this,Stage6.class);
-                    startActivity(intent);
-                    finish();
+                    setDis(6);
+                    button_start.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+                            intent=new Intent(Map.this,Stage6.class);
+                            startActivity(intent);
+                            finish();
+                        }
+                    });
                 }
 
             }
@@ -220,11 +316,18 @@ public class Map extends AppCompatActivity {
             public void onClick(View view) {
                 boolean chance = getSharedPreferences("stage",MODE_PRIVATE).getBoolean("stage7_chance",false);
                 if (chance){
+                    setDis(7);
                     alertDialog();
                 }else{
-                    intent=new Intent(Map.this,Stage7.class);
-                    startActivity(intent);
-                    finish();
+                    setDis(7);
+                    button_start.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+                            intent=new Intent(Map.this,Stage7.class);
+                            startActivity(intent);
+                            finish();
+                        }
+                    });
                 }
 
             }
@@ -234,13 +337,33 @@ public class Map extends AppCompatActivity {
             public void onClick(View view) {
                 boolean chance = getSharedPreferences("stage",MODE_PRIVATE).getBoolean("stage8_chance",false);
                 if (chance){
+                    setDis(8);
                     alertDialog();
                 }else{
-                    intent=new Intent(Map.this,Stage8.class);
-                    startActivity(intent);
-                    finish();
+                    setDis(8);
+                    button_start.setText("下一頁");
+                    button_start.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+                            setDis(9);
+                            button_start.setOnClickListener(new View.OnClickListener() {
+                                @Override
+                                public void onClick(View view) {
+                                    button_start.setText(R.string.stage_button);
+                                    setDis(10);
+                                    button_start.setOnClickListener(new View.OnClickListener() {
+                                        @Override
+                                        public void onClick(View view) {
+                                            intent=new Intent(Map.this,Stage8.class);
+                                            startActivity(intent);
+                                            finish();
+                                        }
+                                    });
+                                }
+                            });
+                        }
+                    });
                 }
-
             }
         });
         imageView_s9.setOnClickListener(new View.OnClickListener() {
@@ -248,11 +371,18 @@ public class Map extends AppCompatActivity {
             public void onClick(View view) {
                 boolean chance = getSharedPreferences("stage",MODE_PRIVATE).getBoolean("stage9_chance",false);
                 if (chance){
+                    setDis(11);
                     alertDialog();
                 }else{
-                    intent=new Intent(Map.this,Stage9.class);
-                    startActivity(intent);
-                    finish();
+                    setDis(11);
+                    button_start.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+                            intent=new Intent(Map.this,Stage9.class);
+                            startActivity(intent);
+                            finish();
+                        }
+                    });
                 }
 
             }
@@ -265,8 +395,249 @@ public class Map extends AppCompatActivity {
             }
         });
 
-        //GPS
+//0
+//1       上旺土雞城	(24.6335414, 121.7215021)
+//2
+//3       幸福20號農場	(24.6337375, 121.7125983)
+//4       進安宮	(24.6336357, 121.7121174)
+//5       神隱村	(24.6318388, 121.7116110)
+//6       松茂果園	(24.6310389, 121.7135121)
+//7       寒溪吊橋	(24.6125062, 121.6876579)
+//8-10    劉記花生	(24.6329585, 121.7128914)
+//        春記麥芽酥	(24.6332329, 121.7130478)
+//        順進蜜餞行	(24.6334561, 121.7132020)
+//11
 
+        //gps intent
+
+        //大鼻子 (?,?)
+        if(locationX==24.6375951&&locationY==121.6932976){
+            boolean chance = getSharedPreferences("stage",MODE_PRIVATE).getBoolean("stage0_chance",false);
+            if (chance){
+                setDis(0);
+                alertDialog();
+            }else{
+                setDis(0);
+                button_start.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        intent=new Intent(Map.this,Stage0.class);
+                        startActivity(intent);
+                        finish();
+                    }
+                });
+            }
+        }
+        //上旺土雞城	(24.6335 414, 121.7215 021)
+        else if(locationX>24.6334 && locationX<24.6336 && locationY>121.7214 && locationY<121.7216){
+            boolean chance = getSharedPreferences("stage",MODE_PRIVATE).getBoolean("stage1_chance",false);
+            if (chance){
+                setDis(1);
+                alertDialog();
+            }else{
+                setDis(1);
+                button_start.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        intent=new Intent(Map.this,Stage1.class);
+                        startActivity(intent);
+                        finish();
+                    }
+                });
+            }
+        }
+        //好蜜養蜂場 (?,?)
+        else if(locationX>20 && locationX<24.6336 && locationY>121.7214 && locationY<121.7216){
+            boolean chance = getSharedPreferences("stage",MODE_PRIVATE).getBoolean("stage2_chance",false);
+            if (chance){
+                setDis(2);
+                alertDialog();
+            }else{
+                setDis(2);
+                button_start.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        intent=new Intent(Map.this,Stage2.class);
+                        startActivity(intent);
+                        finish();
+                    }
+                });
+            }
+        }
+        //幸福20號農場	(24.6337 375, 121.7125 983)
+        else if(locationX>24.6336 && locationX<24.6338 && locationY>121.7214 && locationY<121.7216){
+            boolean chance = getSharedPreferences("stage",MODE_PRIVATE).getBoolean("stage3_chance",false);
+            if (chance){
+                setDis(3);
+                alertDialog();
+            }else{
+                setDis(3);
+                button_start.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        intent=new Intent(Map.this,Stage3.class);
+                        startActivity(intent);
+                        finish();
+                    }
+                });
+            }
+        }
+        //進安宮	  (24.6336 357, 121.7121 174)
+        else if(locationX>24.6335 && locationX<24.6337 && locationY>121.7120 && locationY<121.7122){
+            boolean chance = getSharedPreferences("stage",MODE_PRIVATE).getBoolean("stage4_chance",false);
+            if (chance){
+                setDis(4);
+                alertDialog();
+            }else{
+                setDis(4);
+                button_start.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        intent=new Intent(Map.this,Stage4.class);
+                        startActivity(intent);
+                        finish();
+                    }
+                });
+            }
+        }
+        //神隱村	(24.6318 388, 121.7116 110)
+        else if(locationX>24.6317 && locationX<24.6319 && locationY>121.7115 && locationY<121.7117){
+            boolean chance = getSharedPreferences("stage",MODE_PRIVATE).getBoolean("stage5_chance",false);
+            if (chance){
+                setDis(5);
+                alertDialog();
+            }else{
+                setDis(5);
+                button_start.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        intent=new Intent(Map.this,Stage5.class);
+                        startActivity(intent);
+                        finish();
+                    }
+                });
+            }
+        }
+        //松茂果園	(24.6310 389, 121.7135 121)
+        else if(locationX>24.6309 && locationX<24.6311 && locationY> 121.7134 && locationY< 121.7136){
+            boolean chance = getSharedPreferences("stage",MODE_PRIVATE).getBoolean("stage6_chance",false);
+            if (chance){
+                setDis(6);
+                alertDialog();
+            }else{
+                setDis(6);
+                button_start.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        intent=new Intent(Map.this,Stage6.class);
+                        startActivity(intent);
+                        finish();
+                    }
+                });
+            }
+        }
+        //寒溪吊橋	(24.6125 062, 121.6876 579)
+        else if(locationX>24.6124 && locationX<24.6126 && locationY> 121.6875 && locationY< 121.6877){
+            boolean chance = getSharedPreferences("stage",MODE_PRIVATE).getBoolean("stage7_chance",false);
+            if (chance){
+                setDis(7);
+                alertDialog();
+            }else{
+                setDis(7);
+                button_start.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        intent=new Intent(Map.this,Stage7.class);
+                        startActivity(intent);
+                        finish();
+                    }
+                });
+            }
+        }
+        //劉記花生	(24.6329 585, 121.7128 914)
+        //春記麥芽酥	(24.6332 329, 121.7130 478)
+        //順進蜜餞行	(24.6334 561, 121.7132 020)
+        else if(locationX>24.6328 && locationX<24.6325 && locationY> 121.7127 && locationY< 121.7133){
+            boolean chance = getSharedPreferences("stage",MODE_PRIVATE).getBoolean("stage8_chance",false);
+            if (chance){
+                setDis(8);
+                alertDialog();
+            }else{
+                setDis(8);
+                button_start.setText("下一頁");
+                button_start.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        setDis(9);
+                        button_start.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View view) {
+                                button_start.setText(R.string.stage_button);
+                                setDis(10);
+                                button_start.setOnClickListener(new View.OnClickListener() {
+                                    @Override
+                                    public void onClick(View view) {
+                                        intent=new Intent(Map.this,Stage8.class);
+                                        startActivity(intent);
+                                        finish();
+                                    }
+                                });
+                            }
+                        });
+                    }
+                });
+            }
+        }
+        //嘉苳樹(?,?)
+        else if(locationX>24.8124 && locationX<24.8126 && locationY> 121.6875 && locationY< 121.6877){
+            boolean chance = getSharedPreferences("stage",MODE_PRIVATE).getBoolean("stage9_chance",false);
+            if (chance){
+                setDis(11);
+                alertDialog();
+            }else{
+                setDis(11);
+                button_start.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        intent=new Intent(Map.this,Stage9.class);
+                        startActivity(intent);
+                        finish();
+                    }
+                });
+            }
+        }
+
+    }
+
+    // set UI
+    private void setDis(int i) {
+        textView_title.setText(title[i]);
+        textView_titleDis.setText(titleDis[i]);
+        if(i==0){
+            imageView_stagepic.setImageResource(R.drawable.pic1);
+        }else if(i==1){
+            imageView_stagepic.setImageResource(R.drawable.pic2);
+        }else if(i==2){
+            imageView_stagepic.setImageResource(R.drawable.pic3);
+        }else if(i==3){
+            imageView_stagepic.setImageResource(R.drawable.pic4);
+        }else if(i==4){
+            imageView_stagepic.setImageResource(R.drawable.pic5);
+        }else if(i==5){
+            imageView_stagepic.setImageResource(R.drawable.pic6);
+        }else if(i==6){
+            imageView_stagepic.setImageResource(R.drawable.pic7);
+        }else if(i==7){
+            imageView_stagepic.setImageResource(R.drawable.pic8);
+        }else if(i==8){
+            imageView_stagepic.setImageResource(R.drawable.pic91);
+        }else if(i==9){
+            imageView_stagepic.setImageResource(R.drawable.pic92);
+        }else if(i==10){
+            imageView_stagepic.setImageResource(R.drawable.pic93);
+        }else if(i==11){
+            imageView_stagepic.setImageResource(R.drawable.pic10);
+        }
 
 
     }
@@ -302,4 +673,32 @@ public class Map extends AppCompatActivity {
         }
         return super.onKeyDown(keyCode, event);
     }
+
+    private void updateLocation(Location location) {
+
+        if (location != null) {
+            locationX = location.getLatitude();
+            textView_gpsX.setText("緯度 "+locationX);
+            locationY  = location.getLongitude();
+            textView_gpsY.setText("經度 "+locationY);
+        }
+    }
+
+    private final LocationListener locationListener = new LocationListener() {
+        public void onLocationChanged(Location location) {
+            updateLocation(location);
+
+        }
+        public void onProviderDisabled(String provider){
+            updateLocation(null);
+        }
+        public void onProviderEnabled(String provider){
+
+        }
+        public void onStatusChanged(String provider, int status,Bundle extras){
+
+        }
+    };
+
+
 }

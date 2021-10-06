@@ -26,6 +26,7 @@ public class Stage1 extends AppCompatActivity {
 
     Button button_start;
     Intent intent;
+    ImageView imageView_button;
 
     private static StringBuilder show_equation;//顯示運算式
     private static ArrayList calculate_equation;//計算式
@@ -34,6 +35,38 @@ public class Stage1 extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_stage1);
+
+        imageView_button=findViewById(R.id.imageView_home);
+        imageView_button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                AlertDialog.Builder alertDialog=new AlertDialog.Builder(Stage1.this);
+                alertDialog.setTitle(R.string.back);
+                alertDialog.setMessage(R.string.back_dis)
+                        .setPositiveButton(getString(R.string.button_yes), new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialogInterface, int i) {
+                                SharedPreferences pref = getSharedPreferences("stage", MODE_PRIVATE);
+                                pref.edit()
+                                        .putBoolean("stage1",false)
+                                        .putBoolean("stage1_chance",true)
+                                        .apply();
+
+                                intent=new Intent(Stage1.this,Map.class);
+                                startActivity(intent);
+                                finish();
+                            }
+                        })
+                        .setNegativeButton("取消", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialogInterface, int i) {
+
+                            }
+                        })
+                        .setCancelable(false)
+                        .show();
+            }
+        });
 
         //cal 初始化
         show_equation=new StringBuilder();

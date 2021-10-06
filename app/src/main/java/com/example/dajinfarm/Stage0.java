@@ -9,11 +9,13 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 
 public class Stage0 extends AppCompatActivity {
 
     Button button1,button2,button3;
     Intent intent;
+    ImageView imageView_button;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,6 +41,30 @@ public class Stage0 extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 result(1);
+            }
+        });
+
+        imageView_button=findViewById(R.id.imageView_home);
+        imageView_button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                AlertDialog.Builder alertDialog=new AlertDialog.Builder(Stage0.this);
+                alertDialog.setTitle(R.string.back);
+                alertDialog.setMessage(R.string.back_dis)
+                        .setPositiveButton(getString(R.string.button_yes), new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialogInterface, int i) {
+                                result(0);
+                            }
+                        })
+                        .setNegativeButton("取消", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialogInterface, int i) {
+
+                            }
+                        })
+                        .setCancelable(false)
+                        .show();
             }
         });
 

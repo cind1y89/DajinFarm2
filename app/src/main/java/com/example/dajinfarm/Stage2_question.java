@@ -9,6 +9,7 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 public class Stage2_question extends AppCompatActivity {
@@ -29,6 +30,7 @@ public class Stage2_question extends AppCompatActivity {
 
     Intent intent;
     int index;
+    ImageView imageView_button;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,6 +40,39 @@ public class Stage2_question extends AppCompatActivity {
         button1=findViewById(R.id.button_ans1);
         button2=findViewById(R.id.button_ans2);
         textView_question=findViewById(R.id.textView_question);
+
+        imageView_button=findViewById(R.id.imageView_home);
+        imageView_button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                AlertDialog.Builder alertDialog=new AlertDialog.Builder(Stage2_question.this);
+                alertDialog.setTitle(R.string.back);
+                alertDialog.setMessage(R.string.back_dis)
+                        .setPositiveButton(getString(R.string.button_yes), new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialogInterface, int i) {
+                                SharedPreferences pref = getSharedPreferences("stage", MODE_PRIVATE);
+                                pref.edit()
+                                        .putBoolean("stage2",false)
+                                        .putBoolean("stage2_chance",true)
+                                        .apply();
+
+                                intent=new Intent(Stage2_question.this,Map.class);
+                                startActivity(intent);
+                                finish();
+                            }
+                        })
+                        .setNegativeButton("取消", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialogInterface, int i) {
+
+                            }
+                        })
+                        .setCancelable(false)
+                        .show();
+            }
+        });
+
 
         intent = getIntent();
         index=intent.getIntExtra("index",0);

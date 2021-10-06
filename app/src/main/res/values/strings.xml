@@ -44,4 +44,6 @@
     <string name="stageb_c1dis">收集滿4個字</string>
     <string name="stageb_c2">大鼻子手作折價券×1\n神隱村DIY折價券×1</string>
     <string name="stageb_c2dis">收集滿9個字</string>
+    <string name="back">返回</string>
+    <string name="back_dis">你確定要回到主頁面嗎?\n回去視同放棄關卡喔!</string>
 </resources>
