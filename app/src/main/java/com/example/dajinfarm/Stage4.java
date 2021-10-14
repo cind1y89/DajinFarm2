@@ -68,13 +68,13 @@ public class Stage4 extends AppCompatActivity {
         button3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                result(1);
+                result(0);
             }
         });
         button4.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                result(0);
+                result(1);
             }
         });
     }

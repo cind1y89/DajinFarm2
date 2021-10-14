@@ -90,19 +90,17 @@ public class Map extends AppCompatActivity {
         String provider = locationManager.getBestProvider(criteria, false);
         //詢問是否存取位置資訊
         if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
-            ActivityCompat.requestPermissions(
-                    this,
-                    new String[] {
-                            Manifest.permission.ACCESS_FINE_LOCATION,
-                            Manifest.permission.ACCESS_COARSE_LOCATION}, 1
-            );
-            return;
+            Toast.makeText(Map.this,"請開啟定位權限",Toast.LENGTH_LONG).show();
+            finish();
         }else{
             Location location = locationManager.getLastKnownLocation(provider);
             updateLocation(location);
             locationManager.requestLocationUpdates(provider, 3000, 0, locationListener);
+            if(location==null){
+                Toast.makeText(Map.this,"請開啟GPS與網路再重新啟動系統",Toast.LENGTH_LONG).show();
+            }
         }
-        Location location = locationManager.getLastKnownLocation(provider);
+
 
 
 
@@ -409,9 +407,9 @@ public class Map extends AppCompatActivity {
 //11
 
         //gps intent
-
-        //大鼻子 (?,?)
-        if(locationX==24.6375951&&locationY==121.6932976){
+        //for test
+        if(locationX>24.7422&&locationX<24.7425&&locationY>121.7465&&locationY<121.7467){
+            Log.d("Test","Arrive");
             boolean chance = getSharedPreferences("stage",MODE_PRIVATE).getBoolean("stage0_chance",false);
             if (chance){
                 setDis(0);
@@ -427,9 +425,17 @@ public class Map extends AppCompatActivity {
                     }
                 });
             }
+        }else{
+            Log.d("Test","Something wrong");
+            Log.d("Test","X"+locationX);
+            Log.d("Test","Y"+locationY);
+
         }
-        //上旺土雞城	(24.6335 414, 121.7215 021)
-        else if(locationX>24.6334 && locationX<24.6336 && locationY>121.7214 && locationY<121.7216){
+
+        //大鼻子 (?,?)
+
+        //上旺土雞城	(24.7429 726,121.7505 986)
+        if(locationX>24.7427 && locationX<24.7431 && locationY>121.7503 && locationY<121.7507){
             boolean chance = getSharedPreferences("stage",MODE_PRIVATE).getBoolean("stage1_chance",false);
             if (chance){
                 setDis(1);
@@ -446,8 +452,8 @@ public class Map extends AppCompatActivity {
                 });
             }
         }
-        //好蜜養蜂場 (?,?)
-        else if(locationX>20 && locationX<24.6336 && locationY>121.7214 && locationY<121.7216){
+        //好蜜養蜂場 (24.7429 726,121.7575 986)
+        else if(locationX>24.7427 && locationX<24.7431 && locationY>121.7573 && locationY<121.7577){
             boolean chance = getSharedPreferences("stage",MODE_PRIVATE).getBoolean("stage2_chance",false);
             if (chance){
                 setDis(2);
@@ -464,8 +470,8 @@ public class Map extends AppCompatActivity {
                 });
             }
         }
-        //幸福20號農場	(24.6337 375, 121.7125 983)
-        else if(locationX>24.6336 && locationX<24.6338 && locationY>121.7214 && locationY<121.7216){
+        //幸福20號農場	(24.6337 431,121.7125 752)
+        else if(locationX>24.6335 && locationX<24.6339 && locationY>121.7213 && locationY<121.7217){
             boolean chance = getSharedPreferences("stage",MODE_PRIVATE).getBoolean("stage3_chance",false);
             if (chance){
                 setDis(3);
@@ -482,8 +488,8 @@ public class Map extends AppCompatActivity {
                 });
             }
         }
-        //進安宮	  (24.6336 357, 121.7121 174)
-        else if(locationX>24.6335 && locationX<24.6337 && locationY>121.7120 && locationY<121.7122){
+        //進安宮	  (24.6333 737,121.7120 545))
+        else if(locationX>24.6331 && locationX<24.6335 && locationY>121.7118 && locationY<121.7122){
             boolean chance = getSharedPreferences("stage",MODE_PRIVATE).getBoolean("stage4_chance",false);
             if (chance){
                 setDis(4);
@@ -500,8 +506,8 @@ public class Map extends AppCompatActivity {
                 });
             }
         }
-        //神隱村	(24.6318 388, 121.7116 110)
-        else if(locationX>24.6317 && locationX<24.6319 && locationY>121.7115 && locationY<121.7117){
+        //神隱村	(24.6314 424,121.7119 747)
+        else if(locationX>24.6312 && locationX<24.6316 && locationY>121.7117 && locationY<121.7121){
             boolean chance = getSharedPreferences("stage",MODE_PRIVATE).getBoolean("stage5_chance",false);
             if (chance){
                 setDis(5);
@@ -519,7 +525,7 @@ public class Map extends AppCompatActivity {
             }
         }
         //松茂果園	(24.6310 389, 121.7135 121)
-        else if(locationX>24.6309 && locationX<24.6311 && locationY> 121.7134 && locationY< 121.7136){
+        else if(locationX>24.6308 && locationX<24.6312 && locationY> 121.7133 && locationY< 121.7137){
             boolean chance = getSharedPreferences("stage",MODE_PRIVATE).getBoolean("stage6_chance",false);
             if (chance){
                 setDis(6);
@@ -536,8 +542,8 @@ public class Map extends AppCompatActivity {
                 });
             }
         }
-        //寒溪吊橋	(24.6125 062, 121.6876 579)
-        else if(locationX>24.6124 && locationX<24.6126 && locationY> 121.6875 && locationY< 121.6877){
+        //寒溪吊橋	(24.6105 418,121.6878 228)
+        else if(locationX>24.6103 && locationX<24.6107 && locationY> 121.6876 && locationY< 121.6880){
             boolean chance = getSharedPreferences("stage",MODE_PRIVATE).getBoolean("stage7_chance",false);
             if (chance){
                 setDis(7);
@@ -554,10 +560,10 @@ public class Map extends AppCompatActivity {
                 });
             }
         }
-        //劉記花生	(24.6329 585, 121.7128 914)
-        //春記麥芽酥	(24.6332 329, 121.7130 478)
-        //順進蜜餞行	(24.6334 561, 121.7132 020)
-        else if(locationX>24.6328 && locationX<24.6325 && locationY> 121.7127 && locationY< 121.7133){
+        //劉記花生	(24.6328 35,121.7129 324)
+        //春記麥芽酥	(24.6333 968,121.7132 163)
+        //順進蜜餞行	(24.6334 287,121.7132 447)
+        else if(locationX>24.6326 && locationX<24.6336 && locationY> 121.7127 && locationY< 121.7134){
             boolean chance = getSharedPreferences("stage",MODE_PRIVATE).getBoolean("stage8_chance",false);
             if (chance){
                 setDis(8);
@@ -588,8 +594,8 @@ public class Map extends AppCompatActivity {
                 });
             }
         }
-        //嘉苳樹(?,?)
-        else if(locationX>24.8124 && locationX<24.8126 && locationY> 121.6875 && locationY< 121.6877){
+        //嘉苳樹(24.6392 575,121.6944 971)
+        else if(locationX>24.6390 && locationX<24.6394 && locationY> 121.6942 && locationY< 121.6946){
             boolean chance = getSharedPreferences("stage",MODE_PRIVATE).getBoolean("stage9_chance",false);
             if (chance){
                 setDis(11);
