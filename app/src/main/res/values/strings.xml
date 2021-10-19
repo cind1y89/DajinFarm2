@@ -4,6 +4,7 @@
     <string name="welcome">~ 歡 迎 來 到 大 進 休 閒 農 業 區 ~</string>
     <string name="rule">玩法說明</string>
     <string name="start1">開始挑戰</string>
+    <string name="GPS">已抵達，重整GPS</string>
     <string name="mainDis">請參考地圖，到達指定地點後會跳出任務。挑戰成功即可收集到通關字，集滿字數就能換到相對應的折價券。</string>
     <string name="scarch">尚未抵達任何地點</string>
     <string name="scarchDis">正在尋找位置</string>
