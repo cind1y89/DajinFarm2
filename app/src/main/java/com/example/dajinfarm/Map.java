@@ -458,8 +458,8 @@ public class Map extends AppCompatActivity {
                 });
             }
         }
-        //好蜜養蜂場 (24.7429 726,121.7505 986)
-        else if(locationX>24.7427 && locationX<24.7431 && locationY>121.7503 && locationY<121.7507){
+        //好蜜養蜂場 (24.6370 542,121.7159 267)
+        else if(locationX>24.6320&& locationX<24.6420 && locationY>121.7109  && locationY<121.7209 ){
             boolean chance = getSharedPreferences("stage",MODE_PRIVATE).getBoolean("stage2_chance",false);
             if (chance){
                 setDis(2);
@@ -478,8 +478,8 @@ public class Map extends AppCompatActivity {
                 });
             }
         }
-        //幸福20號農場	((24.63363 21,121.7124 447))
-        else if(locationX>24.63360 && locationX<24.63366 && locationY>121.7122 && locationY<121.7126){
+        //幸福20號農場	(24.6336321,121.7124447)
+        else if(locationX>24.6336301 && locationX<24.6336341 && locationY>121.7124427 && locationY<121.7124467){
             boolean chance = getSharedPreferences("stage",MODE_PRIVATE).getBoolean("stage3_chance",false);
             if (chance){
                 setDis(3);
@@ -498,8 +498,8 @@ public class Map extends AppCompatActivity {
                 });
             }
         }
-        //進安宮	  (24.63362 87,121.7124 41)
-        else if(locationX>24.63359 && locationX<24.63365 && locationY>121.7122 && locationY<121.7126){
+        //進安宮	  (24.6333761,121.7120399)
+        else if(locationX>24.6333741 && locationX<24.6333781 && locationY>121.7120379 && locationY<121.7120419){
             boolean chance = getSharedPreferences("stage",MODE_PRIVATE).getBoolean("stage4_chance",false);
             if (chance){
                 setDis(4);
@@ -538,8 +538,8 @@ public class Map extends AppCompatActivity {
                 });
             }
         }
-        //松茂果園	(24.6104 441,121.6886 793)
-        else if(locationX>24.6102 && locationX<24.6106 && locationY> 121.6884 && locationY< 121.6888){
+        //松茂果園	(24.6314 459,121.7119 795)
+        else if(locationX>24.6264 && locationX<24.6364 && locationY> 121.7069 && locationY< 121.7169){
             boolean chance = getSharedPreferences("stage",MODE_PRIVATE).getBoolean("stage6_chance",false);
             if (chance){
                 setDis(6);
