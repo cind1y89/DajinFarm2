@@ -407,34 +407,10 @@ public class Map extends AppCompatActivity {
     }
 
     private void GPS() {
-        button_start.setText(R.string.stage_dis);
+        button_start.setText(R.string.GPS_wrong);
+        Log.d("Test","X"+locationX);
+        Log.d("Test","Y"+locationY);
         //gps intent
-        //for test
-        if(locationX>24.7422&&locationX<24.7425&&locationY>121.7465&&locationY<121.7467){
-            Log.d("Test","Arrive");
-            boolean chance = getSharedPreferences("stage",MODE_PRIVATE).getBoolean("stage0_chance",false);
-            if (chance){
-                setDis(0);
-                alertDialog();
-                button_start.setText(R.string.stage_dis);
-            }else{
-                setDis(0);
-                button_start.setText(R.string.start1);
-                button_start.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-                        intent=new Intent(Map.this,Stage0.class);
-                        startActivity(intent);
-                        finish();
-                    }
-                });
-            }
-        }else{
-            Log.d("Test","Something wrong");
-            Log.d("Test","X"+locationX);
-            Log.d("Test","Y"+locationY);
-
-        }
 
         //大鼻子 (?,?)
 
@@ -459,7 +435,7 @@ public class Map extends AppCompatActivity {
             }
         }
         //好蜜養蜂場 (24.6370 542,121.7159 267)
-        else if(locationX>24.6320&& locationX<24.6420 && locationY>121.7109  && locationY<121.7209 ){
+        else if(locationX>24.6370242&& locationX<24.6370642 && locationY>121.7159556  && locationY<121.7159963 ){
             boolean chance = getSharedPreferences("stage",MODE_PRIVATE).getBoolean("stage2_chance",false);
             if (chance){
                 setDis(2);
@@ -479,7 +455,7 @@ public class Map extends AppCompatActivity {
             }
         }
         //幸福20號農場	(24.6336321,121.7124447)
-        else if(locationX>24.6336301 && locationX<24.6336341 && locationY>121.7124427 && locationY<121.7124467){
+        else if(locationX>24.6336203 && locationX<24.6337803 && locationY>121.7123916 && locationY<121.7124316){
             boolean chance = getSharedPreferences("stage",MODE_PRIVATE).getBoolean("stage3_chance",false);
             if (chance){
                 setDis(3);
@@ -498,8 +474,8 @@ public class Map extends AppCompatActivity {
                 });
             }
         }
-        //進安宮	  (24.6333761,121.7120399)
-        else if(locationX>24.6333741 && locationX<24.6333781 && locationY>121.7120379 && locationY<121.7120419){
+        //進安宮	  (24.6333761,121.7120399) 24.633903 121.7120371
+        else if(locationX>24.6333486 && locationX<24.6335086 && locationY>121.7120467 && locationY<121.7122267){
             boolean chance = getSharedPreferences("stage",MODE_PRIVATE).getBoolean("stage4_chance",false);
             if (chance){
                 setDis(4);
@@ -518,8 +494,8 @@ public class Map extends AppCompatActivity {
                 });
             }
         }
-        //神隱村	(24.6314 424,121.7119 747)
-        else if(locationX>24.6312 && locationX<24.6316 && locationY>121.7117 && locationY<121.7121){
+        //神隱村	(24.6314 424,121.7119 747)24.6314154 121.7119814
+        else if(locationX>24.63139 && locationX<24.63143 && locationY>121.71196&& locationY<121.7120){
             boolean chance = getSharedPreferences("stage",MODE_PRIVATE).getBoolean("stage5_chance",false);
             if (chance){
                 setDis(5);
@@ -538,8 +514,8 @@ public class Map extends AppCompatActivity {
                 });
             }
         }
-        //松茂果園	(24.6314 459,121.7119 795)
-        else if(locationX>24.6264 && locationX<24.6364 && locationY> 121.7069 && locationY< 121.7169){
+        //松茂果園	(24.6240 ,121.7095 )6214949 7030826 6192 7008413
+        else if(locationX>24.63254 && locationX<24.63270 && locationY> 121.71241 && locationY< 121.71257){
             boolean chance = getSharedPreferences("stage",MODE_PRIVATE).getBoolean("stage6_chance",false);
             if (chance){
                 setDis(6);
@@ -632,6 +608,13 @@ public class Map extends AppCompatActivity {
                     }
                 });
             }
+        }
+        else{
+            imageView_stagepic.setImageResource(R.drawable.map);
+            button_start.setText(R.string.GPS_wrong);
+            Log.d("Test","Something wrong");
+            Log.d("Test","X"+locationX);
+            Log.d("Test","Y"+locationY);
         }
 
     }
