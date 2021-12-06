@@ -86,7 +86,7 @@ public class Map extends AppCompatActivity {
         criteria.setAltitudeRequired(false);//是否提供海拔高度資訊,是或否
         criteria.setBearingRequired(false);//是否提供方向資訊,是或否
         criteria.setCostAllowed(false);//是否允許運營商計費,是或否
-        criteria.setPowerRequirement(Criteria.POWER_LOW);//電池消耗,無、低、中、高
+        criteria.setPowerRequirement(Criteria.POWER_HIGH);//電池消耗,無、低、中、高
         String provider = locationManager.getBestProvider(criteria, false);
         //詢問是否存取位置資訊
         if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
@@ -515,7 +515,7 @@ public class Map extends AppCompatActivity {
             }
         }
         //松茂果園	(24.6240 ,121.7095 )6214949 7030826 6192 7008413
-        else if(locationX>24.63254 && locationX<24.63270 && locationY> 121.71241 && locationY< 121.71257){
+        else if(locationX>24.6211 && locationX<24.6217 && locationY> 121.7027 && locationY< 121.7033){
             boolean chance = getSharedPreferences("stage",MODE_PRIVATE).getBoolean("stage6_chance",false);
             if (chance){
                 setDis(6);
