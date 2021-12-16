@@ -435,7 +435,7 @@ public class Map extends AppCompatActivity {
             }
         }
         //好蜜養蜂場 (24.6370 542,121.7159 267)
-        else if(locationX>24.6370242&& locationX<24.6370642 && locationY>121.7159556  && locationY<121.7159963 ){
+        else if(locationX>24.6367&& locationX<24.6370 && locationY>121.7156  && locationY<121.7160 ){
             boolean chance = getSharedPreferences("stage",MODE_PRIVATE).getBoolean("stage2_chance",false);
             if (chance){
                 setDis(2);
@@ -455,7 +455,7 @@ public class Map extends AppCompatActivity {
             }
         }
         //幸福20號農場	(24.6336321,121.7124447)
-        else if(locationX>24.6336203 && locationX<24.6337803 && locationY>121.7123916 && locationY<121.7124316){
+        else if(locationX>24.6335 && locationX<24.6338 && locationY>121.7124 && locationY<121.7128){
             boolean chance = getSharedPreferences("stage",MODE_PRIVATE).getBoolean("stage3_chance",false);
             if (chance){
                 setDis(3);
@@ -475,7 +475,7 @@ public class Map extends AppCompatActivity {
             }
         }
         //進安宮	  (24.6333761,121.7120399) 24.633903 121.7120371
-        else if(locationX>24.6333486 && locationX<24.6335086 && locationY>121.7120467 && locationY<121.7122267){
+        else if(locationX>24.6333486 && locationX<24.6336 && locationY>121.7120467 && locationY<121.7122267){
             boolean chance = getSharedPreferences("stage",MODE_PRIVATE).getBoolean("stage4_chance",false);
             if (chance){
                 setDis(4);
@@ -495,7 +495,7 @@ public class Map extends AppCompatActivity {
             }
         }
         //神隱村	(24.6314 424,121.7119 747)24.6314154 121.7119814
-        else if(locationX>24.63139 && locationX<24.63143 && locationY>121.71196&& locationY<121.7120){
+        else if(locationX>24.6313 && locationX<24.6317 && locationY>121.7118&& locationY<121.7122){
             boolean chance = getSharedPreferences("stage",MODE_PRIVATE).getBoolean("stage5_chance",false);
             if (chance){
                 setDis(5);
