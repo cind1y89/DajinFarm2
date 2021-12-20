@@ -48,4 +48,5 @@
     <string name="back">返回</string>
     <string name="back_dis">你確定要回到主頁面嗎?\n回去視同放棄關卡喔!</string>
     <string name="GPS_wrong">尚未收尋到GPS</string>
+    <string name="Press">請按我</string>
 </resources>
