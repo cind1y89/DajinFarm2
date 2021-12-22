@@ -184,207 +184,207 @@ public class Map extends AppCompatActivity {
 
             }
         });
-        imageView_s1.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                boolean chance = getSharedPreferences("stage",MODE_PRIVATE).getBoolean("stage1_chance",false);
-                if (chance){
-                    setDis(1);
-                    alertDialog();
-                }else{
-                    setDis(1);
-                    button_start.setOnClickListener(new View.OnClickListener() {
-                        @Override
-                        public void onClick(View view) {
-                            intent=new Intent(Map.this,Stage1.class);
-                            startActivity(intent);
-                            finish();
-                        }
-                    });
-                }
-
-            }
-        });
-        imageView_s2.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                boolean chance = getSharedPreferences("stage",MODE_PRIVATE).getBoolean("stage2_chance",false);
-                if (chance){
-                    setDis(2);
-                    alertDialog();
-                }else{
-                    setDis(2);
-                    button_start.setOnClickListener(new View.OnClickListener() {
-                        @Override
-                        public void onClick(View view) {
-                            intent=new Intent(Map.this,Stage2.class);
-                            startActivity(intent);
-                            finish();
-                        }
-                    });
-                }
-
-            }
-        });
-        imageView_s3.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                boolean chance = getSharedPreferences("stage",MODE_PRIVATE).getBoolean("stage3_chance",false);
-                if (chance){
-                    setDis(3);
-                    alertDialog();
-                }else{
-                    setDis(3);
-                    button_start.setOnClickListener(new View.OnClickListener() {
-                        @Override
-                        public void onClick(View view) {
-                            intent=new Intent(Map.this,Stage3.class);
-                            startActivity(intent);
-                            finish();
-                        }
-                    });
-                }
-            }
-        });
-        imageView_s4.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                boolean chance = getSharedPreferences("stage",MODE_PRIVATE).getBoolean("stage4_chance",false);
-                if (chance){
-                    setDis(4);
-                    alertDialog();
-                }else{
-                    setDis(4);
-                    button_start.setOnClickListener(new View.OnClickListener() {
-                        @Override
-                        public void onClick(View view) {
-                            intent=new Intent(Map.this,Stage4.class);
-                            startActivity(intent);
-                            finish();
-                        }
-                    });
-                }
-
-            }
-        });
-        imageView_s5.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                boolean chance = getSharedPreferences("stage",MODE_PRIVATE).getBoolean("stage5_chance",false);
-                if (chance){
-                    setDis(5);
-                    alertDialog();
-                }else{
-                    setDis(5);
-                    button_start.setOnClickListener(new View.OnClickListener() {
-                        @Override
-                        public void onClick(View view) {
-                            intent=new Intent(Map.this,Stage5.class);
-                            startActivity(intent);
-                            finish();
-                        }
-                    });
-                }
-
-            }
-        });
-        imageView_s6.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                boolean chance = getSharedPreferences("stage",MODE_PRIVATE).getBoolean("stage6_chance",false);
-                if (chance){
-                    setDis(6);
-                    alertDialog();
-                }else{
-                    setDis(6);
-                    button_start.setOnClickListener(new View.OnClickListener() {
-                        @Override
-                        public void onClick(View view) {
-                            intent=new Intent(Map.this,Stage6.class);
-                            startActivity(intent);
-                            finish();
-                        }
-                    });
-                }
-
-            }
-        });
-        imageView_s7.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                boolean chance = getSharedPreferences("stage",MODE_PRIVATE).getBoolean("stage7_chance",false);
-                if (chance){
-                    setDis(7);
-                    alertDialog();
-                }else{
-                    setDis(7);
-                    button_start.setOnClickListener(new View.OnClickListener() {
-                        @Override
-                        public void onClick(View view) {
-                            intent=new Intent(Map.this,Stage7.class);
-                            startActivity(intent);
-                            finish();
-                        }
-                    });
-                }
-
-            }
-        });
-        imageView_s8.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                boolean chance = getSharedPreferences("stage",MODE_PRIVATE).getBoolean("stage8_chance",false);
-                if (chance){
-                    setDis(8);
-                    alertDialog();
-                }else{
-                    setDis(8);
-                    button_start.setText("下一頁");
-                    button_start.setOnClickListener(new View.OnClickListener() {
-                        @Override
-                        public void onClick(View view) {
-                            setDis(9);
-                            button_start.setOnClickListener(new View.OnClickListener() {
-                                @Override
-                                public void onClick(View view) {
-                                    button_start.setText(R.string.stage_button);
-                                    setDis(10);
-                                    button_start.setOnClickListener(new View.OnClickListener() {
-                                        @Override
-                                        public void onClick(View view) {
-                                            intent=new Intent(Map.this,Stage8.class);
-                                            startActivity(intent);
-                                            finish();
-                                        }
-                                    });
-                                }
-                            });
-                        }
-                    });
-                }
-            }
-        });
-        imageView_s9.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                boolean chance = getSharedPreferences("stage",MODE_PRIVATE).getBoolean("stage9_chance",false);
-                if (chance){
-                    setDis(11);
-                    alertDialog();
-                }else{
-                    setDis(11);
-                    button_start.setOnClickListener(new View.OnClickListener() {
-                        @Override
-                        public void onClick(View view) {
-                            intent=new Intent(Map.this,Stage9.class);
-                            startActivity(intent);
-                            finish();
-                        }
-                    });
-                }
-
-            }
-        });
+//        imageView_s1.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                boolean chance = getSharedPreferences("stage",MODE_PRIVATE).getBoolean("stage1_chance",false);
+//                if (chance){
+//                    setDis(1);
+//                    alertDialog();
+//                }else{
+//                    setDis(1);
+//                    button_start.setOnClickListener(new View.OnClickListener() {
+//                        @Override
+//                        public void onClick(View view) {
+//                            intent=new Intent(Map.this,Stage1.class);
+//                            startActivity(intent);
+//                            finish();
+//                        }
+//                    });
+//                }
+//
+//            }
+//        });
+//        imageView_s2.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                boolean chance = getSharedPreferences("stage",MODE_PRIVATE).getBoolean("stage2_chance",false);
+//                if (chance){
+//                    setDis(2);
+//                    alertDialog();
+//                }else{
+//                    setDis(2);
+//                    button_start.setOnClickListener(new View.OnClickListener() {
+//                        @Override
+//                        public void onClick(View view) {
+//                            intent=new Intent(Map.this,Stage2.class);
+//                            startActivity(intent);
+//                            finish();
+//                        }
+//                    });
+//                }
+//
+//            }
+//        });
+//        imageView_s3.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                boolean chance = getSharedPreferences("stage",MODE_PRIVATE).getBoolean("stage3_chance",false);
+//                if (chance){
+//                    setDis(3);
+//                    alertDialog();
+//                }else{
+//                    setDis(3);
+//                    button_start.setOnClickListener(new View.OnClickListener() {
+//                        @Override
+//                        public void onClick(View view) {
+//                            intent=new Intent(Map.this,Stage3.class);
+//                            startActivity(intent);
+//                            finish();
+//                        }
+//                    });
+//                }
+//            }
+//        });
+//        imageView_s4.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                boolean chance = getSharedPreferences("stage",MODE_PRIVATE).getBoolean("stage4_chance",false);
+//                if (chance){
+//                    setDis(4);
+//                    alertDialog();
+//                }else{
+//                    setDis(4);
+//                    button_start.setOnClickListener(new View.OnClickListener() {
+//                        @Override
+//                        public void onClick(View view) {
+//                            intent=new Intent(Map.this,Stage4.class);
+//                            startActivity(intent);
+//                            finish();
+//                        }
+//                    });
+//                }
+//
+//            }
+//        });
+//        imageView_s5.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                boolean chance = getSharedPreferences("stage",MODE_PRIVATE).getBoolean("stage5_chance",false);
+//                if (chance){
+//                    setDis(5);
+//                    alertDialog();
+//                }else{
+//                    setDis(5);
+//                    button_start.setOnClickListener(new View.OnClickListener() {
+//                        @Override
+//                        public void onClick(View view) {
+//                            intent=new Intent(Map.this,Stage5.class);
+//                            startActivity(intent);
+//                            finish();
+//                        }
+//                    });
+//                }
+//
+//            }
+//        });
+//        imageView_s6.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                boolean chance = getSharedPreferences("stage",MODE_PRIVATE).getBoolean("stage6_chance",false);
+//                if (chance){
+//                    setDis(6);
+//                    alertDialog();
+//                }else{
+//                    setDis(6);
+//                    button_start.setOnClickListener(new View.OnClickListener() {
+//                        @Override
+//                        public void onClick(View view) {
+//                            intent=new Intent(Map.this,Stage6.class);
+//                            startActivity(intent);
+//                            finish();
+//                        }
+//                    });
+//                }
+//
+//            }
+//        });
+//        imageView_s7.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                boolean chance = getSharedPreferences("stage",MODE_PRIVATE).getBoolean("stage7_chance",false);
+//                if (chance){
+//                    setDis(7);
+//                    alertDialog();
+//                }else{
+//                    setDis(7);
+//                    button_start.setOnClickListener(new View.OnClickListener() {
+//                        @Override
+//                        public void onClick(View view) {
+//                            intent=new Intent(Map.this,Stage7.class);
+//                            startActivity(intent);
+//                            finish();
+//                        }
+//                    });
+//                }
+//
+//            }
+//        });
+//        imageView_s8.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                boolean chance = getSharedPreferences("stage",MODE_PRIVATE).getBoolean("stage8_chance",false);
+//                if (chance){
+//                    setDis(8);
+//                    alertDialog();
+//                }else{
+//                    setDis(8);
+//                    button_start.setText("下一頁");
+//                    button_start.setOnClickListener(new View.OnClickListener() {
+//                        @Override
+//                        public void onClick(View view) {
+//                            setDis(9);
+//                            button_start.setOnClickListener(new View.OnClickListener() {
+//                                @Override
+//                                public void onClick(View view) {
+//                                    button_start.setText(R.string.stage_button);
+//                                    setDis(10);
+//                                    button_start.setOnClickListener(new View.OnClickListener() {
+//                                        @Override
+//                                        public void onClick(View view) {
+//                                            intent=new Intent(Map.this,Stage8.class);
+//                                            startActivity(intent);
+//                                            finish();
+//                                        }
+//                                    });
+//                                }
+//                            });
+//                        }
+//                    });
+//                }
+//            }
+//        });
+//        imageView_s9.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                boolean chance = getSharedPreferences("stage",MODE_PRIVATE).getBoolean("stage9_chance",false);
+//                if (chance){
+//                    setDis(11);
+//                    alertDialog();
+//                }else{
+//                    setDis(11);
+//                    button_start.setOnClickListener(new View.OnClickListener() {
+//                        @Override
+//                        public void onClick(View view) {
+//                            intent=new Intent(Map.this,Stage9.class);
+//                            startActivity(intent);
+//                            finish();
+//                        }
+//                    });
+//                }
+//
+//            }
+//        });
         imageView_sbouns.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
