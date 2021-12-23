@@ -169,9 +169,11 @@ public class Map extends AppCompatActivity {
                 boolean chance = getSharedPreferences("stage",MODE_PRIVATE).getBoolean("stage0_chance",false);
                 if (chance){
                     setDis(0);
+                    button_start.setText(R.string.stage_dis);
                     alertDialog();
                 }else{
                     setDis(0);
+                    button_start.setText(R.string.start1);
                     button_start.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View view) {
@@ -190,9 +192,11 @@ public class Map extends AppCompatActivity {
                 boolean chance = getSharedPreferences("stage",MODE_PRIVATE).getBoolean("stage1_chance",false);
                 if (chance){
                     setDis(1);
+                    button_start.setText(R.string.stage_dis);
                     alertDialog();
                 }else{
                     setDis(1);
+                    button_start.setText(R.string.start1);
                     button_start.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View view) {
@@ -211,9 +215,11 @@ public class Map extends AppCompatActivity {
                 boolean chance = getSharedPreferences("stage",MODE_PRIVATE).getBoolean("stage2_chance",false);
                 if (chance){
                     setDis(2);
+                    button_start.setText(R.string.stage_dis);
                     alertDialog();
                 }else{
                     setDis(2);
+                    button_start.setText(R.string.start1);
                     button_start.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View view) {
@@ -232,9 +238,11 @@ public class Map extends AppCompatActivity {
                 boolean chance = getSharedPreferences("stage",MODE_PRIVATE).getBoolean("stage3_chance",false);
                 if (chance){
                     setDis(3);
+                    button_start.setText(R.string.stage_dis);
                     alertDialog();
                 }else{
                     setDis(3);
+                    button_start.setText(R.string.start1);
                     button_start.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View view) {
@@ -252,9 +260,11 @@ public class Map extends AppCompatActivity {
                 boolean chance = getSharedPreferences("stage",MODE_PRIVATE).getBoolean("stage4_chance",false);
                 if (chance){
                     setDis(4);
+                    button_start.setText(R.string.stage_dis);
                     alertDialog();
                 }else{
                     setDis(4);
+                    button_start.setText(R.string.start1);
                     button_start.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View view) {
@@ -273,9 +283,11 @@ public class Map extends AppCompatActivity {
                 boolean chance = getSharedPreferences("stage",MODE_PRIVATE).getBoolean("stage5_chance",false);
                 if (chance){
                     setDis(5);
+                    button_start.setText(R.string.stage_dis);
                     alertDialog();
                 }else{
                     setDis(5);
+                    button_start.setText(R.string.start1);
                     button_start.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View view) {
@@ -294,9 +306,11 @@ public class Map extends AppCompatActivity {
                 boolean chance = getSharedPreferences("stage",MODE_PRIVATE).getBoolean("stage6_chance",false);
                 if (chance){
                     setDis(6);
+                    button_start.setText(R.string.stage_dis);
                     alertDialog();
                 }else{
                     setDis(6);
+                    button_start.setText(R.string.start1);
                     button_start.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View view) {
@@ -315,9 +329,11 @@ public class Map extends AppCompatActivity {
                 boolean chance = getSharedPreferences("stage",MODE_PRIVATE).getBoolean("stage7_chance",false);
                 if (chance){
                     setDis(7);
+                    button_start.setText(R.string.stage_dis);
                     alertDialog();
                 }else{
                     setDis(7);
+                    button_start.setText(R.string.start1);
                     button_start.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View view) {
@@ -336,6 +352,7 @@ public class Map extends AppCompatActivity {
                 boolean chance = getSharedPreferences("stage",MODE_PRIVATE).getBoolean("stage8_chance",false);
                 if (chance){
                     setDis(8);
+                    button_start.setText(R.string.stage_dis);
                     alertDialog();
                 }else{
                     setDis(8);
@@ -370,9 +387,11 @@ public class Map extends AppCompatActivity {
                 boolean chance = getSharedPreferences("stage",MODE_PRIVATE).getBoolean("stage9_chance",false);
                 if (chance){
                     setDis(11);
+                    button_start.setText(R.string.stage_dis);
                     alertDialog();
                 }else{
                     setDis(11);
+                    button_start.setText(R.string.start1);
                     button_start.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View view) {
